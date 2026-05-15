@@ -1,49 +1,69 @@
-# ??? Gerador de Etiquetas - Herb·rio Evaldo Buttura (EVB)
+# Gerador de Etiquetas - Herb√°rio Evaldo Buttura (EVB)
 
-Sistema web para geraÁ„o de etiquetas bot‚nicas a partir de planilhas Excel (.xls/.xlsx), com suporte a cÛdigos de barras em imagens PNG.
+Sistema web para gera√ß√£o de etiquetas bot√¢nicas a partir de planilhas Excel (.xls/.xlsx), com suporte a c√≥digos de barras em imagens PNG.
 
-## ?? Funcionalidades
+## Funcionalidades
 
-- ?? Leitura de planilhas Excel (.xls e .xlsx)
-- ??? Upload de imagens de cÛdigos de barras por lote
-- ??? GeraÁ„o autom·tica de etiquetas formatadas
-- ?? ExportaÁ„o para PDF com layout A4 (2 etiquetas por linha)
-- ?? Interface moderna e responsiva
+- Leitura de planilhas Excel (.xls e .xlsx)
+- Upload de imagens de c√≥digos de barras por lote
+- Gera√ß√£o autom√°tica de etiquetas formatadas
+- Exporta√ß√£o para PDF com layout A4 (2 etiquetas por linha)
+- Interface moderna e responsiva
 
-## ?? Como usar
+## Como usar
 
 ### Passo 1: Preparar os arquivos
-- Tenha sua planilha Excel (.xls ou .xlsx) com as colunas necess·rias
-- Tenha as imagens dos cÛdigos de barras em PNG (formato: `EVB00[numtombo].png`)
+- Tenha sua planilha Excel (.xls ou .xlsx) com as colunas necess√°rias (√© a mesma planilha que foi usada para validar os dados no JABOT)
+- Tenha as imagens dos c√≥digos de barras em PNG (formato: `EVB00[numtombo].png`)
+- As imagens s√£o geradas a partir do [JABOTExtract](https://marlonroyer.github.io/JABOTExtract/)  que por sua vez precisa do PDF com os c√≥digos de barra exportados diretamente pelo JABOT
+- Ao final, as imagens dos c√≥digos de barras devem seguir o padr√£o: EVB00[numtombo].png e todas elas devem estar juntas em uma mesma pasta
 
 ### Passo 2: Abrir o sistema
-Acesse: `https://[seu-usuario].github.io/gerador-etiquetas-evb/`
+Acesse: [Gerador_Etiquetas_EVB](https://marlonroyer.github.io/Gerador_Etiquetas_EVB/)
 
 ### Passo 3: Carregar os dados
-1. Selecione as imagens dos cÛdigos de barras (.png)
+1. Selecione as imagens dos c√≥digos de barras (.png)
 2. Selecione a planilha de dados (.xls ou .xlsx)
-3. As etiquetas ser„o geradas automaticamente
+3. As etiquetas ser√£o geradas automaticamente
 
 ### Passo 4: Exportar
 - Clique em "Gerar PDF" para baixar as etiquetas em formato A4
+- Essa etapa pode ser r√°pida, como tamb√°m pode ser muito lenta, depende do numero de etiquetas.
 
-## ?? Colunas necess·rias na planilha
+## Colunas necess√°rias na planilha
 
-| Coluna na planilha | DescriÁ„o |
+| Coluna na planilha | Descri√ß√£o |
 |-------------------|-----------|
-| `numtombo` | N˙mero de tombo (gera o EVB) |
-| `family` | FamÌlia bot‚nica |
-| `genus` | GÍnero |
-| `sp1` | EpÌteto especÌfico |
+| `numtombo` | N√∫mero de tombo (gera o EVB) |
+| `family` | Fam√≠lia bot√¢nica |
+| `genus` | G√™nero |
+| `sp1` | Ep√≠teto espec√≠fico |
 | `author1` | Autor |
 | `detby` | Determinador |
-| `detdd` | Dia da determinaÁ„o |
-| `detmm` | MÍs da determinaÁ„o |
-| `detyy` | Ano da determinaÁ„o |
+| `detdd` | Dia da determina√ß√£o |
+| `detmm` | M√™s da determina√ß√£o |
+| `detyy` | Ano da determina√ß√£o |
 | `collector` | Coletor |
-| `number` | N˙mero de coleta |
+| `number` | N√∫mero de coleta |
 | `projeto` | Projeto |
 
-## ??? Formato das imagens
+## Formato das imagens
 
-As imagens dos cÛdigos de barras devem seguir o padr„o:
+As imagens dos c√≥digos de barras devem seguir o padr√£o:
+EVB00[numtombo].png
+Exemplo: `EVB001234.png` (para o n√∫mero de tombo 1234)
+
+## Tecnologias utilizadas
+
+- HTML5 / CSS3 / JavaScript
+- [SheetJS](https://sheetjs.com/) - Leitura de arquivos Excel
+- [jsPDF](https://github.com/parallax/jsPDF) - Gera√ß√£o de PDF
+- [html2canvas](https://html2canvas.hertzen.com/) - Captura de HTML para imagem
+
+## Licen√ßa
+
+Este projeto √© de uso interno do Herb√°rio Evaldo Buttura.
+
+## Desenvolvido por
+
+Marlon Royer de Morais
