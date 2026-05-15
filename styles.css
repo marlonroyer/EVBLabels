@@ -1,0 +1,732 @@
+﻿/* ============================================
+   EVB Labels - Design Profissional
+   Baseado no JABOT Extract
+   ============================================ */
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    /* Cores Frias (Fundo) */
+    --bg-dark: #0B3F39;
+    --bg-medium: #0E4F45;
+    --bg-teal: #16665A;
+    --bg-light-teal: #1C7F6E;
+    --bg-accent: #2E9987;
+    --bg-highlight: #4BB8A3;
+    
+    /* Cores Quentes (Principal) */
+    --primary-gold: #F3B233;
+    --primary-amber: #F0A92A;
+    --primary-orange: #F17A34;
+    --primary-burnt: #E56A2E;
+    --primary-rust: #C5522A;
+    --primary-red: #C43A2E;
+    
+    /* Cores de Sucesso */
+    --success: #F3B233;
+    --success-light: rgba(243, 178, 51, 0.15);
+    --success-dark: #F0A92A;
+    
+    /* Cores de Erro */
+    --danger: #C43A2E;
+    --danger-light: rgba(196, 58, 46, 0.15);
+    --danger-dark: #A8322A;
+    --danger-bg: #7A1E1B;
+    
+    /* Neutros (Header/Footer) */
+    --cream: #E2C3A6;
+    --cream-dark: #CFA98B;
+    --brown: #8E5E45;
+    --brown-dark: #5C3A2B;
+    --charcoal: #2A2A2A;
+    --near-black: #121212;
+    
+    /* Sombras */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.5);
+    --shadow-gold: 0 0 20px rgba(243, 178, 51, 0.3);
+    
+    /* Bordas */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-teal) 50%, var(--bg-light-teal) 100%);
+    min-height: 100vh;
+    color: var(--cream);
+    line-height: 1.6;
+    margin: 0;  /* Certifique-se que está 0 */
+    padding: 0;  /* Certifique-se que está 0 */
+}
+
+/* ============================================
+   HEADER
+   ============================================ */
+.app-header {
+    background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
+    box-shadow: var(--shadow-md);
+    padding: 2.3rem 2rem;
+    position: sticky;
+    top: -1px;  /* Isso força colar no topo */
+    z-index: 100;
+    border-bottom: 3px solid var(--primary-gold);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 0px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.logo i {
+    font-size: 2.5rem;
+    color: var(--brown-dark);
+    transform: translateX(-1500px);  /* Move 10px para direita (use negativo para esquerda) */
+    align-self: center;
+    margin-top: 15px
+}
+
+.logo h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--near-black);
+    margin-left: -1500px;  /* Adicione isso - move o texto para direita */
+    align-self: center;
+    margin-top: 15px;
+}
+
+.logo h1 span {
+    color: var(--primary-rust);
+    font-weight: 300;
+}
+
+.subtitle {
+    color: var(--brown);
+    font-size: 0.9rem;
+    font-weight: 500;
+    transform: translateX(250px); /* Ajuste o valor conforme necessário */
+}
+
+/* ============================================
+   MAIN CONTAINER
+   ============================================ */
+.main-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* ============================================
+   CARDS
+   ============================================ */
+.card {
+    background: rgba(18, 18, 18, 0.8);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+    overflow: hidden;
+    transition: var(--transition);
+    border: 1px solid var(--primary-gold);
+}
+
+.card:hover {
+    box-shadow: var(--shadow-lg), var(--shadow-gold);
+    transform: translateY(-2px);
+    border-color: var(--primary-amber);
+}
+
+.card-header {
+    background: linear-gradient(135deg, var(--near-black) 0%, var(--charcoal) 100%);
+    padding: 1.25rem 1.5rem;
+    border-bottom: 2px solid var(--primary-rust);
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.card-header i {
+    font-size: 1.5rem;
+    color: var(--primary-gold);
+}
+
+.card-header h2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--cream);
+    flex: 1;
+}
+
+.card-body {
+    padding: 1.5rem;
+    background: rgba(11, 63, 57, 0.3);
+}
+
+/* ============================================
+   STEPS GRID
+   ============================================ */
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+}
+
+.step-item {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba(42, 42, 42, 0.5);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--brown);
+    transition: var(--transition);
+}
+
+.step-item:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--primary-gold);
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary-gold) 0%, var(--primary-orange) 100%);
+    color: var(--near-black);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    margin: 0 auto 1rem;
+}
+
+.step-item i {
+    font-size: 2rem;
+    color: var(--primary-gold);
+    margin-bottom: 0.75rem;
+    display: block;
+}
+
+.step-item p {
+    color: var(--cream-dark);
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+/* ============================================
+   UPLOAD GRID
+   ============================================ */
+.upload-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+/* ============================================
+   UPLOAD AREA
+   ============================================ */
+.upload-area {
+    border: 3px dashed var(--primary-rust);
+    border-radius: var(--radius-md);
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+    background: rgba(42, 42, 42, 0.5);
+}
+
+.upload-area:hover {
+    border-color: var(--primary-gold);
+    background: rgba(243, 178, 51, 0.1);
+    transform: scale(1.02);
+    box-shadow: var(--shadow-gold);
+}
+
+.upload-icon {
+    font-size: 3.5rem;
+    color: var(--primary-gold);
+    margin-bottom: 1rem;
+}
+
+.upload-text {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--cream);
+    margin-bottom: 0.5rem;
+}
+
+.upload-subtext {
+    color: var(--cream-dark);
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+
+/* ============================================
+   STATUS INDICATOR
+   ============================================ */
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    margin-top: 1rem;
+    background: rgba(42, 42, 42, 0.5);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--brown);
+}
+
+.status-icon {
+    font-size: 0.75rem;
+}
+
+.status-pendente .status-icon i { color: var(--brown); }
+.status-carregando .status-icon i { color: var(--primary-gold); animation: pulse 1.5s infinite; }
+.status-sucesso .status-icon i { color: var(--primary-gold); }
+.status-erro .status-icon i { color: var(--primary-red); }
+
+.status-sucesso {
+    background: var(--success-light);
+    border-color: var(--primary-gold);
+}
+
+.status-erro {
+    background: var(--danger-light);
+    border-color: var(--primary-red);
+}
+
+.status-text {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--cream-dark);
+}
+
+.status-sucesso .status-text { color: var(--primary-gold); }
+.status-erro .status-text { color: var(--primary-red); }
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--primary-orange) 0%, var(--primary-rust) 100%);
+    color: var(--cream);
+    border: 2px solid var(--primary-gold);
+}
+
+.btn-primary:hover {
+    background: linear-gradient(135deg, var(--primary-amber) 0%, var(--primary-orange) 100%);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-gold);
+}
+
+.btn-success {
+    background: linear-gradient(135deg, var(--primary-gold) 0%, var(--primary-orange) 100%);
+    color: var(--near-black);
+    border: 2px solid var(--primary-amber);
+    font-weight: 700;
+}
+
+.btn-success:hover {
+    background: linear-gradient(135deg, var(--primary-amber) 0%, var(--primary-burnt) 100%);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-gold);
+}
+
+.btn-lg {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+}
+
+.btn-block {
+    width: 100%;
+    justify-content: center;
+}
+
+#gerar-pdf:disabled {
+    background: var(--brown-dark);
+    cursor: not-allowed;
+    opacity: 0.6;
+    border-color: var(--brown);
+}
+
+/* ============================================
+   PROGRESS BAR
+   ============================================ */
+.progress-info {
+    text-align: center;
+}
+
+.progress-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+#progressText {
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-gold) 0%, var(--primary-orange) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+#progressDetail {
+    color: var(--cream-dark);
+    font-size: 0.9rem;
+}
+
+.progress-bar-wrapper {
+    background: rgba(42, 42, 42, 0.8);
+    border-radius: 20px;
+    height: 30px;
+    overflow: hidden;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+    border: 1px solid var(--brown);
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-gold) 0%, var(--primary-orange) 50%, var(--primary-rust) 100%);
+    border-radius: 20px;
+    transition: width 0.5s ease;
+    width: 0%;
+    box-shadow: 0 0 20px rgba(243, 178, 51, 0.5);
+}
+
+/* ============================================
+   ETIQUETAS GRID
+   ============================================ */
+.etiquetas-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+    padding: 10px;
+}
+
+/* ============================================
+   ETIQUETA
+   ============================================ */
+.etiqueta {
+    width: 10.5cm;
+    height: 2.97cm;
+    border: 1px solid #121212;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 12px;
+    display: flex;
+    text-align: left;
+    background-color: #ffffff;
+    align-items: center;
+    box-shadow: var(--shadow-md);
+    line-height: 1.1;
+    border-radius: 2px;
+}
+
+.etiqueta:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.coluna-esquerda {
+    width: 6.5cm;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.coluna-direita {
+    width: 4cm;
+    border-left: none;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #ffffff;
+    position: relative;
+}
+
+.logo {
+    width: 1.3cm;
+    height: auto;
+    position: absolute;
+    top: 2px;
+    right: 2px;
+}
+
+.codigo-barras {
+    width: 4.1cm;
+    height: auto;
+    margin-top: 1cm;
+}
+
+/* ============================================
+   CAMPOS DA ETIQUETA
+   ============================================ */
+.etiqueta .evb {
+    font-size: 15px;
+    font-weight: bold;
+    margin-bottom: 1px;
+    color: #121212;
+}
+
+.etiqueta .familia {
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 12px;
+    color: #121212;
+}
+
+.etiqueta .genero {
+    font-style: italic;
+    font-size: 11px;
+    color: #121212;
+}
+
+.etiqueta .epiteto {
+    font-style: italic;
+    font-size: 11px;
+    color: #121212;
+}
+
+.etiqueta .autor {
+    font-size: 9px;
+    display: inline;
+    color: #121212;
+}
+
+.etiqueta .determinador {
+    font-size: 9px;
+    color: #121212;
+    line-height: 1;
+}
+
+.etiqueta .data {
+    font-style: normal;
+    font-size: 9px;
+    font-weight: bold;
+    color: #121212;
+    line-height: 1;
+}
+
+.etiqueta .Coletor {
+    font-size: 9px;
+    display: inline;
+    color: #121212;
+}
+
+.etiqueta .NumeroColeta {
+    font-style: normal;
+    font-size: 10px;
+    font-weight: bold;
+    color: #121212;
+}
+
+.etiqueta .projeto {
+    font-size: 9px;
+    color: #5C3A2B;
+    margin-top: 2px;
+    font-style: normal;
+}
+
+.etiqueta div {
+    white-space: normal;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* ============================================
+   BADGES
+   ============================================ */
+.badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge-info {
+    background: rgba(75, 184, 163, 0.2);
+    color: var(--bg-highlight);
+    border: 1px solid var(--bg-highlight);
+}
+
+/* ============================================
+   EMPTY STATE
+   ============================================ */
+.empty-state {
+    text-align: center;
+    padding: 3rem;
+    color: var(--cream-dark);
+}
+
+.empty-state i {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: var(--brown);
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+.app-footer {
+    background: linear-gradient(135deg, var(--cream) 0%, var(--cream-dark) 100%);
+    margin-top: 2rem;
+    border-top: 3px solid var(--primary-gold);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.footer-section h3 {
+    color: var(--near-black);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--brown);
+}
+
+.footer-section p {
+    color: var(--brown-dark);
+    font-size: 0.85rem;
+    margin: 0.25rem 0;
+    line-height: 1.6;
+}
+
+.footer-section i {
+    margin-right: 0.5rem;
+    color: var(--primary-rust);
+}
+
+.footer-bottom {
+    background: rgba(18, 18, 18, 0.9);
+    padding: 1rem 1.5rem;
+    text-align: center;
+    border-top: 1px solid var(--brown);
+}
+
+.footer-bottom p {
+    color: var(--cream-dark);
+    font-size: 0.8rem;
+}
+
+/* ============================================
+   SCROLLBAR
+   ============================================ */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: rgba(42, 42, 42, 0.5);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--brown);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--primary-rust);
+}
+
+/* ============================================
+   RESPONSIVIDADE
+   ============================================ */
+@media (max-width: 768px) {
+    .header-content {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+    }
+    
+    .logo {
+        justify-content: center;
+    }
+    
+    .subtitle {
+        text-align: center;
+    }
+    
+    .upload-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .steps-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .etiqueta {
+        width: 100%;
+        height: auto;
+        flex-direction: column;
+    }
+    
+    .coluna-esquerda,
+    .coluna-direita {
+        width: 100%;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .progress-stats {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

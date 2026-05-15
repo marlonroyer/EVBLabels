@@ -1,0 +1,191 @@
+﻿<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Gerador de Etiquetas Botânicas - Herbário Evaldo Buttura">
+    <meta name="theme-color" content="#0B3F39">
+    
+    <title>EVB Labels - Gerador de Etiquetas Botânicas</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌿</text></svg>">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- CSS Principal -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="app-header">
+    <div class="header-content">
+        <div class="logo">
+            <i class="fas fa-tags"></i>
+            <h1>EVB<span>Labels</span></h1>
+        </div>
+        <p class="subtitle">Gerador de Etiquetas Botânicas • Herbário Evaldo Buttura</p>
+    </div>
+</header>
+
+    <!-- Container Principal -->
+    <main class="main-container">
+        <!-- Card de Instruções -->
+        <div class="card instructions-card">
+            <div class="card-header">
+                <i class="fas fa-info-circle"></i>
+                <h2>Instruções</h2>
+            </div>
+            <div class="card-body">
+                <div class="steps-grid">
+                    <div class="step-item">
+                        <div class="step-number">1</div>
+                        <i class="fas fa-images"></i>
+                        <p>Selecione as imagens dos códigos de barras (.png)</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">2</div>
+                        <i class="fas fa-file-excel"></i>
+                        <p>Selecione a planilha de dados (.xls ou .xlsx)</p>
+                    </div>
+                    <div class="step-item">
+                        <div class="step-number">3</div>
+                        <i class="fas fa-file-pdf"></i>
+                        <p>Visualize as etiquetas e gere o PDF</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Cards de Upload -->
+        <div class="upload-grid">
+            <!-- Card de Upload de Imagens -->
+            <div class="card upload-card">
+                <div class="card-header">
+                    <i class="fas fa-images"></i>
+                    <h2>Imagens dos Códigos de Barras</h2>
+                </div>
+                <div class="card-body">
+                    <div class="upload-area" onclick="document.getElementById('imagensFile').click()">
+                        <input type="file" id="imagensFile" accept=".png" multiple hidden>
+                        <div class="upload-content">
+                            <i class="fas fa-barcode upload-icon"></i>
+                            <p class="upload-text">Selecionar imagens .png</p>
+                            <p class="upload-subtext">Arraste e solte ou clique para selecionar</p>
+                            <button class="btn btn-primary" type="button">
+                                <i class="fas fa-folder-open"></i> Selecionar Imagens
+                            </button>
+                        </div>
+                    </div>
+                    <div class="status-indicator" id="status-imagens">
+                        <span class="status-icon"><i class="fas fa-circle"></i></span>
+                        <span class="status-text">Nenhuma imagem selecionada</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card de Upload de Planilha -->
+            <div class="card upload-card">
+                <div class="card-header">
+                    <i class="fas fa-file-excel"></i>
+                    <h2>Planilha de Dados</h2>
+                </div>
+                <div class="card-body">
+                    <div class="upload-area" onclick="document.getElementById('excelFile').click()">
+                        <input type="file" id="excelFile" accept=".xls,.xlsx" hidden>
+                        <div class="upload-content">
+                            <i class="fas fa-table upload-icon"></i>
+                            <p class="upload-text">Selecionar planilha</p>
+                            <p class="upload-subtext">Formatos .xls ou .xlsx</p>
+                            <button class="btn btn-primary" type="button">
+                                <i class="fas fa-folder-open"></i> Selecionar Planilha
+                            </button>
+                        </div>
+                    </div>
+                    <div class="status-indicator" id="status-planilha">
+                        <span class="status-icon"><i class="fas fa-circle"></i></span>
+                        <span class="status-text">Nenhuma planilha selecionada</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Card de Pré-visualização -->
+        <div class="card preview-card" id="previewCard" style="display: none;">
+            <div class="card-header">
+                <i class="fas fa-tags"></i>
+                <h2>Pré-visualização das Etiquetas</h2>
+                <span class="badge badge-info" id="etiquetaCount">0 etiquetas</span>
+            </div>
+            <div class="card-body">
+                <div id="etiquetas-container" class="etiquetas-grid"></div>
+                <div id="emptyPreview" class="empty-state">
+                    <i class="fas fa-inbox"></i>
+                    <p>Nenhuma etiqueta gerada ainda</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Botão Gerar PDF -->
+        <button id="gerar-pdf" class="btn btn-success btn-lg btn-block" style="display: none;">
+            <i class="fas fa-file-pdf"></i> Gerar PDF
+        </button>
+
+        <!-- Card de Progresso -->
+        <div class="card progress-card" id="progressCard" style="display: none;">
+            <div class="card-header">
+                <i class="fas fa-tasks"></i>
+                <h2>Gerando PDF</h2>
+            </div>
+            <div class="card-body">
+                <div class="progress-info">
+                    <div class="progress-stats">
+                        <span id="progressText">0%</span>
+                        <span id="progressDetail">Preparando etiquetas...</span>
+                    </div>
+                    <div class="progress-bar-wrapper">
+                        <div class="progress-fill" id="progressFill"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Herbário Evaldo Buttura</h3>
+                <p>Universidade Federal da Integração Latino-Americana (UNILA)</p>
+                <p>Parquetec - Bloco 4, espaço 2, salas 10,11,12</p>
+                <p>Foz do Iguaçu - Paraná - Brasil</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Desenvolvimento</h3>
+                <p>Sistema de Geração de Etiquetas Botânicas</p>
+                <p>Elaborado por Marlon Royer</p>
+                <p>Versão 1.0.1 - Maio de 2026</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Contato</h3>
+                <p><i class="fab fa-github"></i> github.com/marlonroyer</p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 Herbário Evaldo Buttura - Todos os direitos reservados • Desenvolvido para uso interno</p>
+        </div>
+    </footer>
+
+    <!-- Bibliotecas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <!-- Script Principal -->
+    <script src="script.js"></script>
+</body>
+</html>
